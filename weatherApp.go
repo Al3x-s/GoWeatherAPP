@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 type task struct {
@@ -41,6 +44,25 @@ func removeTasks(index int) {
 
 func main() {
 	//creates a strcture to rep a task.
-	viewTasks()
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Println("\nTodo List")
+		fmt.Println("1. Add Task")
+		fmt.Println("2. View Tasks")
+		fmt.Println("3. Remove Task")
+		fmt.Println("4. Quit")
+		fmt.Print("Enter your choice: ")
 
+		scanner.Scan()
+		choice := strings.TrimSpace(scanner.Text())
+
+		switch choice {
+		case "1":
+			fmt.Println("What is the task that you want to add?")
+			scanner.Scan()
+			description := strings.TrimSpace(scanner.Text())
+			addTask(description)
+			//hello
+		}
+	}
 }
